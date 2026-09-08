@@ -55,7 +55,7 @@ test.describe('Swag Labs Checkout Flow', () => {
     await page.click('[data-test="add-to-cart-sauce-labs-backpack"]');
     await page.click('.shopping_cart_link');
     await page.click('[data-test="checkout"]');
-    await page.click('[data-test="continue"]'); // ไม่กรอกข้อมูลเลย
+    await page.click('[data-test="continue"]');
 
     const errorMsg = page.locator('[data-test="error"]');
     await expect(errorMsg).toBeVisible();
