@@ -82,13 +82,14 @@ SauceDemo-Automation-Testing/
 │   └── checkout.spec.js      # Login, cart and checkout test cases
 ├── playwright.config.js      # Playwright configuration
 ├── package.json
-├── LICENSE
+├── package-lock.json
+├── .gitignore
 └── README.md
 ```
 
 
 ## 👤 Author
 
-**Biggykung**
-GitHub: [@Biggykung](https://github.com/Biggykung)
+**Paponwat Cheawrongroj**
+GitHub: github.com/Biggykung
 
