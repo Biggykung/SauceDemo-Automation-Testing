@@ -86,9 +86,6 @@ SauceDemo-Automation-Testing/
 └── README.md
 ```
 
-## Author
-
-Paponwat Cheawrongroj, [@Biggykung](https://github.com/Biggykung)
 
 ## 👤 Author
 
