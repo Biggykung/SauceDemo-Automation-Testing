@@ -1,64 +1,60 @@
-# 🧪 SauceDemo Automation Testing
+# SauceDemo Automation Testing
 
-An end-to-end test automation project for [saucedemo.com](https://www.saucedemo.com), built with Playwright (JavaScript). It validates the core e-commerce user journey (login, cart, and checkout) and runs automatically on every push through GitHub Actions CI/CD.
+[![Playwright Tests](https://github.com/Biggykung/SauceDemo-Automation-Testing/actions/workflows/playwright.yml/badge.svg)](https://github.com/Biggykung/SauceDemo-Automation-Testing/actions/workflows/playwright.yml)
 
-## 📑 Table of Contents
-- [About This Project](#-about-this-project)
-- [Key Features Snapshot](#-key-features-snapshot)
-- [Technology Stack](#-technology-stack)
-- [Getting Started](#-getting-started)
-- [Repository Structure](#-repository-structure)
+An end-to-end test automation project for [saucedemo.com](https://www.saucedemo.com), built with Playwright (JavaScript). It validates the core e-commerce user journey (login, cart, and checkout) and runs automatically on every push and pull request to `main` through GitHub Actions CI/CD.
 
----
+## Table of Contents
 
-## 💡 About This Project
+- [About This Project](#about-this-project)
+- [Test Coverage](#test-coverage)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+- [Repository Structure](#repository-structure)
 
-This repository contains automated UI tests for SauceDemo, a sample e-commerce web application. The tests follow a real user journey: *Login → Add Items to Cart → Checkout → Order Confirmation*.
+## About This Project
 
-The work demonstrates proficiency in test automation, end-to-end UI testing, and CI/CD integration, with every code push automatically verified by a GitHub Actions pipeline.
+This repository contains automated UI tests for SauceDemo, a sample e-commerce web application. The tests follow a real user journey: Login → Add Items to Cart → Checkout → Order Confirmation.
 
-## 🎯 Key Features Snapshot
+The work demonstrates test automation, end-to-end UI testing, and CI/CD integration, with every push and pull request to `main` automatically verified by a GitHub Actions pipeline.
 
-| Feature | Domain | Core Functionality |
-| :--- | :--- | :--- |
-| 🔐 **Login Testing** | Authentication | Verifies successful login with valid credentials and proper error handling for invalid or locked-out users. |
-| 🛒 **Cart Testing** | Shopping Flow | Validates adding and removing products and confirms that the cart contents stay accurate. |
-| 💳 **Checkout Testing** | Transaction Flow | Covers the full checkout process, from entering customer information to order completion. |
-| ⚙️ **CI/CD Integration** | DevOps | GitHub Actions runs the entire test suite on every push, catching regressions early. |
-| 📊 **Test Reporting** | Quality Assurance | Generates a Playwright HTML report showing pass/fail results for each test run. |
+## Test Coverage
 
-## 💻 Technology Stack
+Test results: **4 test cases × 3 browsers (Chromium, Firefox, WebKit) = 12 test runs** per build, all defined in `tests/checkout.spec.js`.
+
+| Test | What it verifies |
+| --- | --- |
+| Login | `standard_user` logs in and lands on the Products page |
+| Cart | Adding 3 items updates the cart badge to the correct count |
+| Checkout (happy path) | Full flow from cart to "Thank you for your order!", and the order total equals item total + tax (checked numerically) |
+| Checkout (negative) | Submitting empty shipping info shows a validation error |
+
+CI/CD: GitHub Actions runs the whole suite on every push and pull request to `main` (Node 20, 2 retries on CI), then uploads the Playwright HTML report as a build artifact kept for 30 days.
+
+## Technology Stack
 
 | Tool | Purpose |
-| :--- | :--- |
-| **Playwright** | End-to-end browser automation and test runner. |
-| **JavaScript (Node.js)** | Test scripting language and runtime. |
-| **GitHub Actions** | CI/CD pipeline that executes tests on every push. |
-| **Git & GitHub** | Version control and repository hosting. |
+| --- | --- |
+| Playwright | End-to-end browser automation and test runner |
+| JavaScript (Node.js) | Test scripting language and runtime |
+| GitHub Actions | CI/CD pipeline that executes tests on every push |
+| Git & GitHub | Version control and repository hosting |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Node.js
+
+- Node.js 20 or later
 - npm
 
-### Installation & Setup
+### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Biggykung/SauceDemo-Automation-Testing.git
-   cd SauceDemo-Automation-Testing
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Install Playwright browsers**
-   ```bash
-   npx playwright install
-   ```
+```bash
+git clone https://github.com/Biggykung/SauceDemo-Automation-Testing.git
+cd SauceDemo-Automation-Testing
+npm install
+npx playwright install
+```
 
 ### Running the Tests
 
@@ -73,23 +69,26 @@ npx playwright test --headed
 npx playwright show-report
 ```
 
-> 💡 SauceDemo provides public demo accounts on its login page (e.g., `standard_user`), so no extra setup is needed to run the tests.
+SauceDemo provides public demo accounts on its login page (e.g., `standard_user`), so no extra setup is needed.
 
-## 📂 Repository Structure
+## Repository Structure
 
-```text
+```
 SauceDemo-Automation-Testing/
 ├── .github/
 │   └── workflows/
 │       └── playwright.yml    # GitHub Actions CI/CD pipeline
 ├── tests/
-│   ├── login.spec.js         # Login test cases
-│   ├── cart.spec.js          # Cart test cases
-│   └── checkout.spec.js      # Checkout test cases
+│   └── checkout.spec.js      # Login, cart and checkout test cases
 ├── playwright.config.js      # Playwright configuration
 ├── package.json
+├── LICENSE
 └── README.md
 ```
+
+## Author
+
+Paponwat Cheawrongroj, [@Biggykung](https://github.com/Biggykung)
 
 ## 👤 Author
 
